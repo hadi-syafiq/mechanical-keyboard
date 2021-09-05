@@ -174,6 +174,12 @@ async function fetchGithubData() {
         showError();
 }
 
+// Add event onclick to dropdown
+var navLinks = document.querySelectorAll(".dropdown");
+navLinks.forEach(link => {
+    link.addEventListener("click", e => e.currentTarget.className += " active");
+});
+
 // Add event onclick to each navigation link
 var navLinks = document.querySelectorAll(".tablink");
 navLinks.forEach(link => {
