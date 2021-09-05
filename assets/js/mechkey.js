@@ -24,6 +24,11 @@ function openTab(evt, tabName) {
     else document.getElementById('nav').style.display = "none";
 }
 
+function showAllTab() {
+    tabcontent = document.querySelectorAll(".tabcontent");
+    tabcontent.forEach(tab => tab.style.display = "block");
+}
+
 // Show error tab and hide navigation bar
 function showError() { openTab(null, 'error'); }
 
@@ -165,9 +170,13 @@ async function fetchGithubData() {
     if (parseGitHubData(data)) {
         if (window.location.hash.length > 0) {
             var currentPage = window.location.hash.replace('#', ''); //currentUrl.searchParams.get("page");
-            console.log(currentPage);
             var button = document.querySelector(currentPage ? `#nav a[tab="${currentPage}"]` : "#navHome");
             if (button) button.click();
+        }
+
+        if (window.screen.width <= 736) {
+            console.log('width: ' + window.screen.width)
+            showAllTab();
         }
     }
     else
@@ -185,6 +194,9 @@ var navLinks = document.querySelectorAll(".tablink");
 navLinks.forEach(link => {
     link.addEventListener("click", e => openTab(e, link.getAttribute('tab')));
 });
+
+// Add event for show all tab button
+btnShowAllTab.addEventListener("click", e => showAllTab());
 
 // Load github data on load
 fetchGithubData();
