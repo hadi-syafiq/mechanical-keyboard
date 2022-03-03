@@ -8,7 +8,7 @@ function openTab(evt, tabName) {
     window.location.hash = tabName;
 
     // Get all elements with class="tabcontent" and hide them
-    tabcontent = document.querySelectorAll(".main.tabcontent)");
+    tabcontent = document.querySelectorAll(".tabcontent)");
     tabcontent.forEach(tab => tab.style.display = "none");
 
     // Get all elements with class="tablinks" and remove the class "active"
